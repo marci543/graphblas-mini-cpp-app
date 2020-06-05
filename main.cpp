@@ -8,9 +8,12 @@ int main() {
     // based on https://github.com/DrTimothyAldenDavis/GraphBLAS/blob/5e569f2fcb0597b4ad3c60fca1a4ff8e938fd111/Doc/GraphBLAS_UserGuide.tex#L8173-L8191
     GrB_init(GrB_NONBLOCKING);
 
-    char *library_date;
-    GxB_Global_Option_get(GxB_LIBRARY_DATE, &library_date);
-    std::cout << "SuiteSparse:GraphBLAS " << library_date << std::endl;
+    std::cout << GxB_IMPLEMENTATION_NAME << " "
+              << GxB_IMPLEMENTATION_MAJOR << "." << GxB_IMPLEMENTATION_MINOR << "." << GxB_IMPLEMENTATION_SUB
+              << " " << GxB_IMPLEMENTATION_DATE
+              << " (Spec: " << GxB_SPEC_MAJOR << "." << GxB_SPEC_MINOR << "." << GxB_SPEC_SUB
+              << " " << GxB_SPEC_DATE << ")"
+              << std::endl;
 
     GrB_Vector x, y;
     GrB_Vector_new(&x, GrB_INT32, 1);
