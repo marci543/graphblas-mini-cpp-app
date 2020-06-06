@@ -8,9 +8,9 @@ Install [SuiteSparse:GraphBLAS](https://github.com/DrTimothyAldenDavis/SuiteSpar
 export JOBS=$(nproc)
 
 git clone --depth 1 --branch master https://github.com/DrTimothyAldenDavis/GraphBLAS/
-cd GraphBLAS
-make && sudo make install && sudo ldconfig
-cd ..
+cd GraphBLAS/build
+# GBCOMPACT=1 for faster SuiteSparse compilation, but the code will be slower
+cmake .. -DGBCOMPACT=1 && make && sudo make install && sudo ldconfig
 ```
 
 ## Run and build
